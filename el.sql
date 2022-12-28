@@ -1,5 +1,5 @@
 -- 이름에 el이 들어가는 동물 찾기
-SELECT animal_id, name
-  from animal_ins
- where animal_type='Dog' and lower(name) like lower('%el%')
- order by name
+SELECT ANIMAL_ID, NAME
+  FROM ANIMAL_INS
+ WHERE animal_type='Dog' AND lower(NAME) LIKE lower('%el%')
+ ORDER BY NAME
