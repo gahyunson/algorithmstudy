@@ -6,3 +6,10 @@ def solution(n,a,b):
             return answer
         a=(a//2+a%2)
         b=(b//2+b%2)
+        
+print(type(list({1,2,3})))
+
+a=10 
+while(a>0): 
+    print(a) 
+    a-=1
