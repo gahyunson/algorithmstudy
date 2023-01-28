@@ -31,6 +31,7 @@ SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
   FROM ANIMAL_INS
  WHERE NAME IN ("Lucy", "Ella", "Pickle", "Rogan", "Sabrina", "Mitty")
 
+-- 조건을 잘 정리할 것
  -- 조건별로 분류하여 주문상태 출력하기
 SELECT ORDER_ID
      , PRODUCT_ID
