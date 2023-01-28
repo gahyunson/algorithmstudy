@@ -59,3 +59,15 @@ SELECT B.CATEGORY, SUM(BSY.SALES) AS TOTAL_SALES
     ON B.BOOK_ID=BSY.BOOK_ID
  GROUP BY B.CATEGORY
  ORDER BY B.CATEGORY ASC
+
+-- 원하는 조건을 서브쿼리로 만들어 inner join 하여 데이터를 추려낼 수 있었다.
+ -- 헤비 유저가 소유한 장소
+SELECT P.ID, P.NAME, P.HOST_ID
+  FROM PLACES P
+INNER JOIN 
+        (SELECT HOST_ID
+           FROM PLACES
+          GROUP BY HOST_ID
+        HAVING COUNT(*)>=2) T1
+        ON P.HOST_ID=T1.HOST_ID
+ORDER BY ID
