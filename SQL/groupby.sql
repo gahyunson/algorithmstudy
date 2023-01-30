@@ -71,3 +71,34 @@ INNER JOIN
         HAVING COUNT(*)>=2) T1
         ON P.HOST_ID=T1.HOST_ID
 ORDER BY ID
+
+-- 입양 시각 구하기(2)
+# SELECT 0시부터 23시까지 입양이 몇 건이나 발생했는지 조회
+# GROUP BY 각 시간대별로
+# ORDER BY 시간대 순으로 정렬
+ 
+-- 가상 테이블 생성 WITH RECURSIVE
+    -- index table create
+WITH RECURSIVE tb1 AS (
+    -- 초깃값 0 설정
+    SELECT 0 AS HOUR
+    UNION ALL
+    -- 초깃값 이용해서 반복문 생성
+    SELECT HOUR+1 FROM tb1 WHERE HOUR < 23
+    -- index에 맞는 count값 설정
+) , tb2 AS (
+    SELECT HOUR(DATETIME) AS HOUR 
+         , COUNT(DISTINCT ANIMAL_ID) AS CNT
+      FROM ANIMAL_OUTS
+     GROUP BY HOUR
+)
+-- 최종 조회문
+-- 시간, 카운트수
+SELECT tb1.HOUR
+     , IF(tb2.CNT IS NULL, 0, CNT) AS COUNT
+     # , CASE WHEN tb2.CNT IS NULL THEN 0 ELSE CNT END AS COUNT
+-- 가상의 두 테이블을 합친다
+FROM tb1
+     LEFT JOIN tb2 
+            ON tb1.HOUR = tb2.HOUR
+ORDER BY HOUR

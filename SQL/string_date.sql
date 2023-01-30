@@ -52,3 +52,24 @@ SELECT ORDER_ID
         END AS "출고여부"
   FROM FOOD_ORDER
  ORDER BY ORDER_ID ASC
+
+ -- 1. 입양을 간 동물 -> 입양간 동물 정보 테이블에 있어야한다(기준이 됨)
+-- 2. 보호 기간 = 입양일 - 보호 시작일 
+-- 3. 보호 기간이 가장 긴 = 보호 기간 값이 가장 큰
+-- 오랜 기간 보호한 동물(2)
+SELECT AO.ANIMAL_ID, AO.NAME
+  FROM ANIMAL_OUTS AO
+LEFT JOIN ANIMAL_INS AI -- LEFT JOIN / JOIN 둘 다 가능 
+    ON AO.ANIMAL_ID=AI.ANIMAL_ID
+ WHERE AO.DATETIME IS NOT NULL
+ ORDER BY (AO.DATETIME-AI.DATETIME) DESC
+ LIMIT 2 
+
+-- GROUP 별 STRING을 모두 합치려면 - GROUP_CONCAT
+-- 우유와 요거트가 담긴 장바구니
+SELECT CART_ID
+  FROM CART_PRODUCTS
+ GROUP BY CART_ID
+HAVING GROUP_CONCAT(NAME) LIKE "%Milk%" 
+   AND GROUP_CONCAT(NAME) LIKE "%Yogurt%"
+ ORDER BY CART_ID
