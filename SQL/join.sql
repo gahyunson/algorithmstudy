@@ -71,3 +71,20 @@ LEFT JOIN ANIMAL_INS AI
    AND (AI.SEX_UPON_INTAKE LIKE "Intact%")
 -- AI에서 중성화 안한 경우 & AO 에서 중성화 한 경우
  ORDER BY AO.ANIMAL_ID
+
+-- ORDERY BY 잊지 말것
+ -- 그룹별 조건에 맞는 식당 목록 출력하기
+# SELECT 회원 이름, 리뷰 텍스트, 리뷰 작성일
+#   FROM MEMBER_PROFILE와 REST_REVIEW 
+#  WHERE 리뷰를 가장 많이 작성한
+#  ORDER BY 리뷰 작성일을 기준으로 오름차순, 리뷰 텍스트를 기준으로 오름차순
+SELECT MR.MEMBER_NAME, RR.REVIEW_TEXT, DATE_FORMAT(RR.REVIEW_DATE,"%Y-%m-%d") REVIEW_DATE
+  FROM MEMBER_PROFILE MR
+  JOIN REST_REVIEW RR
+    ON MR.MEMBER_ID=RR.MEMBER_ID
+ WHERE MR.MEMBER_ID=(SELECT RR.MEMBER_ID
+                       FROM REST_REVIEW RR
+                      GROUP BY RR.MEMBER_ID
+                      ORDER BY COUNT(*) DESC
+                      LIMIT 1)
+ ORDER BY REVIEW_DATE, REVIEW_TEXT
