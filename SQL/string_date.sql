@@ -73,3 +73,72 @@ SELECT CART_ID
 HAVING GROUP_CONCAT(NAME) LIKE "%Milk%" 
    AND GROUP_CONCAT(NAME) LIKE "%Yogurt%"
  ORDER BY CART_ID
+
+ -- 취소되지 않은 진료 예약 조회하기
+# SELECT 진료예약번호, 환자이름, 환자번호, 진료과코드, 의사이름, 진료예약일시 항목
+# 조건 2022년 4월 13일
+#     취소되지 않은
+#     흉부외과(CS) 진료 예약 내역
+# 정렬 진료예약일시를 기준으로 오름차순
+SELECT A.APNT_NO, P.PT_NAME, A.PT_NO, A.MCDP_CD, D.DR_NAME, A.APNT_YMD
+  FROM APPOINTMENT A
+  JOIN DOCTOR D
+    ON A.MDDR_ID=D.DR_ID
+  JOIN PATIENT P
+    ON A.PT_NO=P.PT_NO
+ WHERE DATE_FORMAT(A.APNT_YMD,"%Y-%m-%d")="2022-04-13"
+   AND A.APNT_CNCL_YN="N"
+   AND A.MCDP_CD="CS"
+ ORDER BY A.APNT_YMD 
+
+-- 자동차 대여 기록 별 대여 금액 구하기
+-- 단계1. 날짜별로 대여비를 할인율 적용한 값을 계산한다.
+SELECT HISTORY_ID -- 대여 기록 아이디
+     , FLOOR(DAILY_FEE * (DATEDIFF(END_DATE, START_DATE) + 1) * (100 - COALESCE(DISCOUNT_RATE, 0)) / 100) FEE
+     -- 대여비 계산
+     , CAST(SUBSTR(DURATION_TYPE, 1, INSTR(DURATION_TYPE, '일 이상') - 1) AS SIGNED) boundary
+     -- 적용할 퍼센트 범위
+  FROM CAR_RENTAL_COMPANY_CAR car
+  JOIN CAR_RENTAL_COMPANY_RENTAL_HISTORY rental -- 대여 날짜 필요
+    ON car.CAR_ID = rental.CAR_ID
+LEFT OUTER JOIN CAR_RENTAL_COMPANY_DISCOUNT_PLAN plan -- 할인율 필요
+    ON car.CAR_TYPE = plan.CAR_TYPE 
+   AND DATEDIFF(END_DATE, START_DATE) + 1 >= SUBSTR(DURATION_TYPE, 1, INSTR(DURATION_TYPE, '일 이상') - 1)
+   -- 대여날이 할인율 날과 비교하여, 더 커야한다..?
+ WHERE car.CAR_TYPE = '트럭'
+-- 단계2. 위 코드를 FROM에 넣는다.
+-- row_num를 생성
+SELECT HISTORY_ID, FEE
+     , ROW_NUMBER() OVER (
+                 PARTITION BY HISTORY_ID ORDER BY boundary DESC) row_num
+  FROM (
+                SELECT HISTORY_ID
+                     , FLOOR(DAILY_FEE * (DATEDIFF(END_DATE, START_DATE) + 1) * (100 - COALESCE(DISCOUNT_RATE, 0)) / 100) FEE
+                     , CAST(SUBSTR(DURATION_TYPE, 1, INSTR(DURATION_TYPE, '일 이상') - 1) AS SIGNED) boundary
+                  FROM CAR_RENTAL_COMPANY_CAR car
+                  JOIN CAR_RENTAL_COMPANY_RENTAL_HISTORY rental 
+                    ON car.CAR_ID = rental.CAR_ID
+       LEFT OUTER JOIN CAR_RENTAL_COMPANY_DISCOUNT_PLAN plan
+                    ON car.CAR_TYPE = plan.CAR_TYPE 
+                       AND DATEDIFF(END_DATE, START_DATE) + 1 >= SUBSTR(DURATION_TYPE, 1, INSTR(DURATION_TYPE, '일 이상') - 1)
+                 WHERE car.CAR_TYPE = '트럭') t
+-- 3단계. row_num을 이용한 조건문
+ SELECT HISTORY_ID, FEE
+  FROM (
+        SELECT HISTORY_ID, FEE
+             , ROW_NUMBER() OVER (
+                 PARTITION BY HISTORY_ID ORDER BY boundary DESC) row_num
+          FROM (
+                SELECT HISTORY_ID
+                     , FLOOR(DAILY_FEE * (DATEDIFF(END_DATE, START_DATE) + 1) * (100 - COALESCE(DISCOUNT_RATE, 0)) / 100) FEE
+                     , CAST(SUBSTR(DURATION_TYPE, 1, INSTR(DURATION_TYPE, '일 이상') - 1) AS SIGNED) boundary
+                  FROM CAR_RENTAL_COMPANY_CAR car
+                  JOIN CAR_RENTAL_COMPANY_RENTAL_HISTORY rental 
+                    ON car.CAR_ID = rental.CAR_ID
+       LEFT OUTER JOIN CAR_RENTAL_COMPANY_DISCOUNT_PLAN plan
+                    ON car.CAR_TYPE = plan.CAR_TYPE 
+                       AND DATEDIFF(END_DATE, START_DATE) + 1 >= SUBSTR(DURATION_TYPE, 1, INSTR(DURATION_TYPE, '일 이상') - 1)
+                 WHERE car.CAR_TYPE = '트럭') t
+        ) t
+ WHERE row_num = 1
+ ORDER BY FEE DESC, HISTORY_ID DESC
