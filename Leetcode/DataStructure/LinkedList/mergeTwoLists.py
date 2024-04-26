@@ -5,9 +5,8 @@ class ListNode:
         self.val = val
         self.next = next
 
-
 # 21. Merge Two Sorted Lists
-class Solution:
+class Solution21:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(0)
         current = dummy
@@ -28,7 +27,7 @@ class Solution:
     
 '''list1 = ListNode(1, ListNode(2, ListNode(4)))
 list2 = ListNode(1, ListNode(3, ListNode(4)))
-solution = Solution()
+solution = Solution21()
 merged_head = solution.mergeTwoLists(list1, list2)
 
 def print_list(node):
@@ -38,16 +37,3 @@ def print_list(node):
     print()
 
 print_list(merged_head)'''
-
-
-# 83. Remove Duplicates from Sorted List
-class Solution:
-    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        cur = head
-
-        while cur:
-            if cur.next and cur.val == cur.next.val:
-                cur.next = cur.next.next
-            else:
-                cur = cur.next
-        return head
