@@ -8,7 +8,6 @@ class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
         if not head or not head.next or left==right:
             return head
-        
 
         newhead = ListNode(0)
         newcur = newhead
@@ -32,3 +31,28 @@ class Solution:
                 newcur = newcur.next
 
         return newhead.next
+    
+        '''
+        if not head or not head.next or left==right:
+            return head
+
+        newhead = ListNode(0)
+        newcur = newhead
+
+        for _ in range(left-1):
+            newcur.next = head
+            newcur = newcur.next
+            head = head.next
+        # print(newcur)
+        new = None
+        for _ in range(right - left + 1):
+            tmp = head.next
+            head.next = new
+            new = head
+            head = tmp
+        newcur.next = new
+        while newcur.next:
+            newcur = newcur.next
+        newcur.next = head
+        return newhead.next
+        '''
