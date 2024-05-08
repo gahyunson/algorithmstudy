@@ -36,11 +36,10 @@ class Solution:
         if not head or not head.next or left==right:
             return head
 
-        newhead = ListNode(0)
+        newhead = ListNode(0, head)
         newcur = newhead
 
         for _ in range(left-1):
-            newcur.next = head
             newcur = newcur.next
             head = head.next
         # print(newcur)

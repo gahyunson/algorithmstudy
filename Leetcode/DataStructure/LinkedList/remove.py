@@ -1,5 +1,12 @@
 # 203. Remove Linked List Elements
 # Definition for singly-linked list.
+'''
+result = ListNode(0)
+test = head
+result.next = head
+cur = result
+print(cur is head, cur == head, test is head, test == head) head와 연관되지 않게 새로운 result 변수를 만든것이다.
+'''
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
