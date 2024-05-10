@@ -9,7 +9,8 @@
 - Time complexity : O(n)
 - Auxiliary Space : O(1)
 
-example. [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, ...]    
+### example. 
+1. [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, ...] Cycle
 slow = 1 , fast = 1    
 slow = 2 , fast = 3    
 slow = 3 , fast = 5    
@@ -19,7 +20,7 @@ slow = 5 , fast = 4
 slow = 1 , fast = 1    
 **The fast catches the slow**
 
-[1, 2, 1] No cycle
+2. [1, 2, 1] No cycle
 slow = 1 , fast = 1
 slow = 2 , fast = 1
 **The fast reach the end**    
@@ -45,4 +46,5 @@ class Solution:
         # The fast reach the end
         return 'Loop doesn't exist in the Linked List'
 ```
-
+[Leetcode]()
+[reference link](https://www.geeksforgeeks.org/floyds-cycle-finding-algorithm/)
