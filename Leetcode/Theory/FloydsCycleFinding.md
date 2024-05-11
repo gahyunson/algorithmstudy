@@ -46,5 +46,30 @@ class Solution:
         # The fast reach the end
         return 'Loop doesn't exist in the Linked List'
 ```
-[Leetcode]()
+
+If you have to know the meeting point
+- Time complexity : O(n)
+- Auxiliary space : O(1)
+```
+def detectLoop(head):
+    slow = head
+    fast = head
+    while slow and fast and fast.next:
+        slow = slow.next
+        fast = fast.next
+        if slow==fast:
+        break
+    if slow!=fast:
+        return None
+    
+    # initially slow. and then we can find a meething point
+    slow = head
+    while slow!=fast:
+        slow = slow.next
+        fast = fast.next
+    return slow
+```
+
+
+Leetcode Problem List : 141. Linked List Cycle, 142. Linked List Cycle 2    
 [reference link](https://www.geeksforgeeks.org/floyds-cycle-finding-algorithm/)
