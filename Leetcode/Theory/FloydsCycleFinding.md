@@ -25,6 +25,29 @@ slow = 1 , fast = 1
 slow = 2 , fast = 1
 **The fast reach the end**    
 
+if structure is 'head ~ loop starting point ~'
+
+head ~ loop starting point distance ~ the first meeting point ~~
+|----- X ----|------------------------- Y -------|
+_____________|------------------------ C -----------------------|
+loop starting point ~ the first meeting point = Y    
+1 loop distance = C    
+
+Can make formulars ...
+1. slow = X + Y + C*s    
+2. fast = X + Y + C*f
+
+slow speed * 2 = fast speed , two points have meeting point so,
+- slow * 2 = fast
+
+Thus,
+
+2(X+Y+Cs) = X+Y+Cf    
+
+X+Y = Cf - 2Cs = (f-2s)C = K*C (K is some positive constant)
+
+X = KC - Y
+
 ```
 class Node:
     def __init__(self, data):
@@ -69,7 +92,7 @@ def detectLoop(head):
         fast = fast.next
     return slow
 ```
-
+# why initiate slow to head is always working?
 
 Leetcode Problem List : 141. Linked List Cycle, 142. Linked List Cycle 2    
 [reference link](https://www.geeksforgeeks.org/floyds-cycle-finding-algorithm/)
