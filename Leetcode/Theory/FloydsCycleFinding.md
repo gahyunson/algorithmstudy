@@ -48,6 +48,23 @@ X+Y = Cf - 2Cs = (f-2s)C = K*C (K is some positive constant)
 
 X = KC - Y
 
+so, I can prove 'why reseted slow to head is always working?'
+
+1. slow location = X + Y
+    fast location = X + Y
+2. slow reset to head
+3. 
+1) slow location = X
+2) fast location = X + Y + X
+X = X + Y + X
+X = X + Y + (KC - Y) = X + KC
+
+C is one time loop, it starts on X.
+
+KC - Y 에서 Y만큼 왔던 Y distance 를 해결하면, loop start point ~ loop end point 한 횟수를 C 만큼 움직이는 거니까, 
+slow 가 출발지점 X 만큼 온 것돠 C 루프를 반복하는 출발점에 있는 것이 같다.
+
+
 ```
 class Node:
     def __init__(self, data):
@@ -92,7 +109,6 @@ def detectLoop(head):
         fast = fast.next
     return slow
 ```
-# why initiate slow to head is always working?
 
 Leetcode Problem List : 141. Linked List Cycle, 142. Linked List Cycle 2    
 [reference link](https://www.geeksforgeeks.org/floyds-cycle-finding-algorithm/)
