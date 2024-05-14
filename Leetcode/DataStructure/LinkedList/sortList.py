@@ -23,6 +23,7 @@ class Solution:
         return newhead.next
         
         '''
+        # MERGE SORT!
         if not head or not head.next:
             return head
 
