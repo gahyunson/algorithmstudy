@@ -15,14 +15,14 @@ slow = 1 , fast = 1
 slow = 2 , fast = 3    
 slow = 3 , fast = 5    
 **The fast reach the end**    
-slow = 4 , fast = 2    
-slow = 5 , fast = 4    
-slow = 1 , fast = 1   
-**The fast catches the slow**
+slow = 4 , fast = 3      
+slow = 5 , fast = 5 **The fast catches the slow**
 
-2. [1, 2, 1] No cycle    
+
+2. [1, 2, 1, 4] No cycle    
 slow = 1 , fast = 1    
 slow = 2 , fast = 1    
+slow = 1 , fast = None
 **The fast reach the end**    
 
 **if** structure is 'head ~ loop starting point ~'
