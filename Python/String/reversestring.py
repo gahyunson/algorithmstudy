@@ -1,3 +1,5 @@
+import pdb
+
 # 1. reverse() helper
 def reverse1(str):
     str_list = str.split('')
@@ -9,6 +11,7 @@ def reverse2(str):
     reversed = ''
     for s in str:
         reversed = reversed + s
+        breakpoint()
     return reversed 
 
 # 3. reduce heloper
@@ -17,6 +20,8 @@ def reverse3(str):
     return reduce(lambda reversed, char: char + reversed, str, '')
 
 # test
-result = reverse3('hello')
+result = reverse2('hello')
 print(result) 
 print(type(result))
+
+pdb.run("reverse2('hello')")
