@@ -23,7 +23,7 @@ example.
 - [10, 27, 38, 43].
 
 to code
-```
+```python
 
 
 # Python program for implementation of MergeSort
@@ -108,7 +108,7 @@ for i in range(n):
 # This code is contributed by Mohit Kumra
 
 ```
-Time Complexity : O(n logn)
+Time Complexity : O(n logn)    
 Space Complexity : O(n)
 
 
