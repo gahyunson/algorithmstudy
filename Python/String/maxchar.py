@@ -5,7 +5,7 @@
 # maxChar("abcccccccd") === "c"
 # maxChar("apple 1231111") === "1"
 
-def maxChar(str):
+def maxChar1(str):
     dic = {}
 
     for s in str:
@@ -23,4 +23,14 @@ def maxChar(str):
             char = k 
     return char 
 
-print(maxChar('11110202020111111'))
+
+from collections import Counter 
+
+def maxChar2(str):
+    chars = Counter(str)
+    result = max(chars, key=chars.get)
+
+    return result
+
+
+print(maxChar2('11110202020111111'))
