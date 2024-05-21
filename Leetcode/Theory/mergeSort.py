@@ -1,30 +1,3 @@
-# Merge Sort
-- A sorting algorithm 
-- follows the **divide-and-conquer** approach
-- 평균 time complexity : O(nlogn) , 최악 : O(nlogn)
-
-1. break down an array into smaller subarrays
-2. sort them individually
-3. merge them back together
-
-example.
-1. [1, 3, 6, 7] , [2, 4]    
-
-1, 2 -> [1]    
-3, 2 -> [1, 2]   
-3, 4 -> [1, 2, 3]   
-6, 4 -> [1, 2, 3, 4]   
-6, None -> [1, 2, 3, 4, 6, 7]   
-
-2. [38, 27, 43, 10]    
-- [38, 27], [43, 10]
-- [38], [27], [43], [10]
-- sorted
-- merge
-- [10, 27, 38, 43].
-
-to code
-```python
 # Python program for implementation of MergeSort
  
 # Merges two subarrays of arr[].
@@ -105,10 +78,3 @@ for i in range(n):
     print("%d" % arr[i],end=" ")
  
 # This code is contributed by Mohit Kumra
-
-```
-Time Complexity : O(n logn)    
-Space Complexity : O(n)
-
-
-[Reference](https://www.geeksforgeeks.org/merge-sort/?ref=lbp)
