@@ -28,7 +28,7 @@ from collections import Counter
 
 def maxChar2(str):
     chars = Counter(str)
-    result = max(chars, key=chars.get)
+    result = max(chars, key=chars.get) 
 
     return result
 
