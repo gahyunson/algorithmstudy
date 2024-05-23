@@ -9,6 +9,15 @@
 #   anagrams('Hi there', 'Bye there') --> False
 import re
 
+def anagrams2(stringA, stringB):
+    return cleanString(stringA) == cleanString(stringB)
+
+def cleanString(str):
+    reStr = re.sub(r'\W', '', str).lower().split().sort()
+    return reStr
+
+
+
 def anagrams1(stringA, stringB):
     aCharMap = buildCharMap(stringA)
     bcharMap = buildCharMap(stringB)
@@ -19,7 +28,6 @@ def anagrams1(stringA, stringB):
         if aCharMap[char]!= bcharMap[char]:
             return False
     return True
-
 def buildCharMap(str):
     charMap = {}
     for char in re.sub(r'\W', '', str).lower():
@@ -29,4 +37,14 @@ def buildCharMap(str):
             charMap[char] += 1
     return charMap
 
-print(anagrams1('Hello!!', 'elhlo'))
+print(anagrams1('hello', 'llohe'))
+print(anagrams1('Whoa! Hi!', 'Hi! Whoa!'))
+print(anagrams1('One One', 'Two two two'))
+print(anagrams1('One one', 'One one c'))
+print(anagrams1('A tree, a life, a bench', 'A tree, a fence, a yard'))
+
+print(anagrams2('hello', 'llohe'))
+print(anagrams2('Whoa! Hi!', 'Hi! Whoa!'))
+print(anagrams2('One One', 'Two two two'))
+print(anagrams2('One one', 'One one c'))
+print(anagrams2('A tree, a life, a bench', 'A tree, a fence, a yard'))
