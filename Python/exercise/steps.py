@@ -57,11 +57,13 @@ def steps3(n, row = 0, stair = ''):
         return steps3(n, row + 1)
 
     # completing the current row
-    if len(stair) <= row:
+    '''if len(stair) <= row:
         stair += '#'
     else:
         stair += ' '
 
-    steps3(n, row, stair)   
+    steps3(n, row, stair)   '''
+    add = '#' if len(stair) <= row else ' '
+    steps3(n, row, stair + add)
     
 steps3(3)
