@@ -32,7 +32,42 @@
 # 0 2n-1 0
 
 def pyramid1(n):
-    for i in range(n+1):
-        print(' '*(n-i) + '#'*(2*i-1) + ' '*(n-i))
+    for i in range(1,n+1):
+        print('_'*(n-i) + '#'*(2*i-1) + '_'*(n-i))
 
-pyramid1(3)
+# row, column
+def pyramid2(n):
+    midpoint = (2*n-1)//2
+    for row in range(n):
+        level = ''
+        for col in range(2*n-1):
+            if midpoint-row <= col and col <= midpoint+row:
+                level += '#'
+            else:
+                level += '_'
+            col += 1
+        row += 1
+        print(level)
+
+# Recursion
+def pyramid3(n, row=0, level=''):
+    if row == n:
+        return;
+
+    if len(level) == (2*n-1):
+        print(level)
+        return pyramid3(n, row+1)
+    
+    midpoint = (2*n-1)//2
+    add = ''
+    if midpoint-row <= len(level) <= midpoint+row:
+        add = '#'
+    else:
+        add = '_'
+    
+    pyramid3(n, row, level + add)
+
+
+
+
+pyramid3(3)
