@@ -67,7 +67,4 @@ def pyramid3(n, row=0, level=''):
     
     pyramid3(n, row, level + add)
 
-
-
-
 pyramid3(3)
