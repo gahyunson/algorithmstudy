@@ -7,12 +7,13 @@ Below is adding and removing mechanism of a queue in javascript.
 
 Queue is ... good for complicated problem.
 
-Create a new, empty queue
-`const q = new Queue();`
+Create a new, empty queue  
+`q = Queue()` in python  
+`const q = new Queue();` in javascript
 
-Add a record to a queue 
+Add a record to a queue   
 `q.add(1);`
 
-Remove record at the end of a queue
+Remove record at the end of a queue  
 `q.remove();`   
 

@@ -8,7 +8,7 @@
 #     q.add(1);
 #     q.remove(); // returns 1;
 
-class Queue2:
+class Queue:
     def __init__(self) -> None:
         self.queue = []
     def add(self, n):
@@ -16,7 +16,7 @@ class Queue2:
     def remove(self):
         return self.queue.pop()
     
-q2 = Queue2()
+q2 = Queue()
 q2.add(1)
 q2.add(2)
 q2.add(3)
@@ -26,7 +26,7 @@ q2.add(5)
 print(q2.queue)
 
 
-class Queue:
+class Queue2:
     def __init__(self, queue = []):
         self.queue = []
 
@@ -42,7 +42,7 @@ class Queue:
     def remove(self, queue):
         return self.queue.pop()
 
-q = Queue()
+q = Queue2()
 q.add(q, 1)
 q.add(q, 2)
 q.add(q, 3)
