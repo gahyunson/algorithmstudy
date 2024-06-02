@@ -21,6 +21,8 @@ class Stack:
         return self.data.pop()
     
     def peek(self):
+        if not self.data:
+            return;
         return self.data[-1]
     
 s = Stack()
