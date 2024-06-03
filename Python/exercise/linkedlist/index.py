@@ -34,4 +34,21 @@ class LinkedList:
         self.head = None 
 
     def removeFirst(self):
+        if not self.head:
+            return None
         self.head = self.head.next 
+
+    def removeLast(self):
+        if not self.head:
+            return None
+        if not self.head.next:
+            self.head = None
+            return None 
+        
+        previous = self.head 
+        node = self.head.next 
+        while node.next:
+            previous = node 
+            node = node.next 
+        previous.next = None 
+        return self.head

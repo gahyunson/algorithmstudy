@@ -64,5 +64,36 @@ class Test(unittest.TestCase):
         # Checking the first node after removal
         self.assertIsNone(l.getFirst())
 
+    def test_removeLast(self):
+        l = List()
+        # This checks if removeLast does not raise an exception
+        try:
+            l.removeLast()
+        except Exception as e:
+            self.fail(f"removeLast() raised an exception {e}")
+
+        l = List()
+        l.insertFirst('a')
+        l.removeLast()
+        self.assertIsNone(l.head)
+
+        l = List()
+        l.insertFirst('b')
+        l.insertFirst('a')
+        l.removeLast()
+        self.assertEqual(l.size(), 1)
+        self.assertEqual(l.head.data, 'a')
+
+        l = List()
+        l.insertFirst('c')
+        l.insertFirst('b')
+        l.insertFirst('a')
+        l.removeLast()
+        self.assertEqual(l.size(), 2)
+        self.assertEqual(l.getLast().data, 'b')
+
+        
+
+
 if __name__ == '__main__':
     unittest.main()
