@@ -17,3 +17,21 @@ class LinkedList:
             cnt+=1
             node = node.next 
         return cnt 
+    
+    def getFirst(self):
+        return self.head 
+
+    def getLast(self):
+        if not self.head:
+            return None 
+        
+        node = self.head 
+        while node.next:
+            node = node.next 
+        return node 
+    
+    def clear(self):
+        self.head = None 
+
+    def removeFirst(self):
+        self.head = self.head.next 
