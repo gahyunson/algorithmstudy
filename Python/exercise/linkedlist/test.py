@@ -18,6 +18,16 @@ class Test(unittest.TestCase):
         self.assertEqual(l.head.data, 1)
         l.insertFirst(2)
         self.assertEqual(l.head.data, 2)
+    
+    def test_size(self):
+        l = List()
+        self.assertEqual(l.size(), 0)
+        l.insertFirst(1)
+        l.insertFirst(1)
+        l.insertFirst(1)
+        l.insertFirst(1)
+        self.assertEqual(l.size(), 4)
+
 
 if __name__ == '__main__':
     unittest.main()
