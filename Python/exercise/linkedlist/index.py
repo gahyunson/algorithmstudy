@@ -52,3 +52,50 @@ class LinkedList:
             node = node.next 
         previous.next = None 
         return self.head
+
+    def insertLast(self, data):
+        last = self.getLast()
+        if last:
+            last.next = Node(data)
+        else:
+            self.head = Node(data)
+
+    def getAt(self, integer):
+        # node = self.head 
+        # if self.size() < integer:
+        #     return None 
+        
+        # for i in range(integer):
+        #     node = node.next 
+        # return node 
+        if not self.head:
+            return 
+        
+        counter = 0
+        node = self.head 
+        while node:
+            if counter == integer:
+                return node 
+            counter += 1
+            node = node.next 
+        return
+        
+    
+    def removeAt(self, idx):
+        # doesnt crash on an empty list 
+        if not self.head:
+            return
+
+        # deletes the first node 
+        if idx == 0:
+            self.head = self.head.next
+            return
+
+        pre = self.getAt(idx - 1)
+        # doesnt crash on an index out of bounds
+        if not pre.next:
+            return
+    
+        # deletes the node at the given index
+        # works on the last node
+        pre.next = pre.next.next 
