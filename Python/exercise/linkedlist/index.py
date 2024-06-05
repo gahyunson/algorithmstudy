@@ -82,20 +82,32 @@ class LinkedList:
         
     
     def removeAt(self, idx):
-        # doesnt crash on an empty list 
-        if not self.head:
-            return
+        # # doesnt crash on an empty list 
+        # if not self.head:
+        #     return
 
-        # deletes the first node 
-        if idx == 0:
-            self.head = self.head.next
-            return
+        # # deletes the first node 
+        # if idx == 0:
+        #     self.head = self.head.next
+        #     return
 
-        pre = self.getAt(idx - 1)
-        # doesnt crash on an index out of bounds
-        if not pre.next:
-            return
+        # pre = self.getAt(idx - 1)
+        # # doesnt crash on an index out of bounds
+        # if not pre.next:
+        #     return
     
-        # deletes the node at the given index
-        # works on the last node
-        pre.next = pre.next.next 
+        # # deletes the node at the given index
+        # # works on the last node
+        # pre.next = pre.next.next 
+
+    def insertAt(self, data, integer):
+        if not self.head:
+            self.head = Node(data)
+            return
+        if integer == 0:
+            self.head = Node(data, self.head)
+            return 
+        
+        pre = self.getAt(integer-1) if self.getAt(integer-1) else self.getLast()
+        node = Node(data, pre.next)
+        pre.next = node  

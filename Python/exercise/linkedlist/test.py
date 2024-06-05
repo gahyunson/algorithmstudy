@@ -140,7 +140,7 @@ class Test(unittest.TestCase):
         l.removeAt(3)
         self.assertIsNone(l.getAt(3))
 
-    @unittest.skip("InsertAt tests skipped")
+    # @unittest.skip("InsertAt tests skipped")
     def test_insertAt(self):
         l = List()
         l.insertAt('hi', 0)
