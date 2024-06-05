@@ -116,14 +116,20 @@ class Test(unittest.TestCase):
     # @unittest.skip("RemoveAt tests skipped")
     def test_removeAt(self):
         l = List()
+        # with self.assertRaises():
+        #     l.removeAt(0)
+        #     l.removeAt(1)
+        #     l.removeAt(2)
         self.assertIsNone(l.removeAt(0))
         self.assertIsNone(l.removeAt(1))
         self.assertIsNone(l.removeAt(2))
 
+        l = List()
         l.insertFirst('a')
         l.removeAt(1)
         self.assertIsNone(l.removeAt(1))
 
+        l = List()
         l.insertLast(1)
         l.insertLast(2)
         l.insertLast(3)
@@ -132,13 +138,23 @@ class Test(unittest.TestCase):
         l.removeAt(0)
         self.assertEqual(l.getAt(0).data, 2)
 
+        l = List()
+        l.insertLast(1)
+        l.insertLast(2)
+        l.insertLast(3)
+        l.insertLast(4)
         self.assertEqual(l.getAt(1).data, 2)
         l.removeAt(1)
         self.assertEqual(l.getAt(1).data, 3)
 
+        l = List()
+        l.insertLast(1)
+        l.insertLast(2)
+        l.insertLast(3)
+        l.insertLast(4)
         self.assertEqual(l.getAt(3).data, 4)
         l.removeAt(3)
-        self.assertIsNone(l.getAt(3))
+        self.assertIsNone(l.getAt(3), None)
 
     # @unittest.skip("InsertAt tests skipped")
     def test_insertAt(self):
@@ -146,6 +162,7 @@ class Test(unittest.TestCase):
         l.insertAt('hi', 0)
         self.assertEqual(l.getFirst().data, 'hi')
 
+        l = List()
         l.insertLast('a')
         l.insertLast('b')
         l.insertLast('c')
@@ -155,6 +172,7 @@ class Test(unittest.TestCase):
         self.assertEqual(l.getAt(2).data, 'b')
         self.assertEqual(l.getAt(3).data, 'c')
 
+        l = List()
         l.insertLast('a')
         l.insertLast('b')
         l.insertLast('c')
@@ -166,6 +184,7 @@ class Test(unittest.TestCase):
         self.assertEqual(l.getAt(3).data, 'c')
         self.assertEqual(l.getAt(4).data, 'd')
 
+        l = List()
         l.insertLast('a')
         l.insertLast('b')
         l.insertAt('hi', 2)
@@ -173,6 +192,7 @@ class Test(unittest.TestCase):
         self.assertEqual(l.getAt(1).data, 'b')
         self.assertEqual(l.getAt(2).data, 'hi')
 
+        l = List()
         l.insertLast('a')
         l.insertLast('b')
         l.insertAt('hi', 30)
