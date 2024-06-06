@@ -21,15 +21,19 @@
 4. Check if two sets are disjoint or not    
 
 1. disjoint set에 new sets를 추가한다
-2. disjoint sets가 단 하나의 집합이 되도록 Union 연산으로 합해준다
+2. 여러개 집합을 Union 연산으로 합해준다
 3. Find 연산을 통해 disjoint set 을 대표하는 것을 찾는다
 4. 마지막으로 disjoint가 두개의 집합인지 아닌지 체크한다
+
+[1, 2, 3] , [4, 5, 6] 일 때,
+1 2 3 4 5 6 원소들은 
+1 1 2 4 4 5 대표하는 원소들이다. 
 
 
 ### Find
 - Time complexity : O(n)
 ```python
-def find(i):
+def find(parent, i):
     # If i is the parent of itself 
     if parent[i] == i :
         # Then i is the representative of this set.
