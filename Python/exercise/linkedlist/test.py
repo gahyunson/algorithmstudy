@@ -200,7 +200,7 @@ class Test(unittest.TestCase):
         self.assertEqual(l.getAt(1).data, 'b')
         self.assertEqual(l.getAt(2).data, 'hi')
 
-    @unittest.skip("ForEach tests skipped")
+    # @unittest.skip("ForEach tests skipped")
     def test_forEach(self):
         l = List()
 
@@ -209,14 +209,15 @@ class Test(unittest.TestCase):
         l.insertLast(3)
         l.insertLast(4)
 
-        l.forEach(lambda node: node.data + 10)
+        # l.forEach(lambda node: node.data + 10)
+        l.forEach(lambda node: setattr(node, 'data', node.data+10))
 
         self.assertEqual(l.getAt(0).data, 11)
         self.assertEqual(l.getAt(1).data, 12)
         self.assertEqual(l.getAt(2).data, 13)
         self.assertEqual(l.getAt(3).data, 14)
 
-    @unittest.skip("for...of loops tests skipped")
+    # @unittest.skip("for...of loops tests skipped")
     def test_for_of_loops(self):
         l = List()
 

@@ -61,24 +61,24 @@ class LinkedList:
             self.head = Node(data)
 
     def getAt(self, integer):
-        # node = self.head 
-        # if self.size() < integer:
-        #     return None 
-        
-        # for i in range(integer):
-        #     node = node.next 
-        # return node 
-        if not self.head:
-            return 
-        
-        counter = 0
         node = self.head 
-        while node:
-            if counter == integer:
-                return node 
-            counter += 1
+        if self.size() < integer:
+            return None 
+        
+        for i in range(integer):
             node = node.next 
-        return
+        return node 
+        # if not self.head:
+        #     return 
+        
+        # counter = 0
+        # node = self.head 
+        # while node:
+        #     if counter == integer:
+        #         return node 
+        #     counter += 1
+        #     node = node.next 
+        # return
         
     
     def removeAt(self, idx):
@@ -114,3 +114,15 @@ class LinkedList:
             pre = self.getLast()
         node = Node(data, pre.next)
         pre.next = node  
+
+    def forEach(self, fn):
+        node = self.head
+        while node:
+            fn(node)
+            node = node.next 
+
+    def __iter__(self):
+        node = self.head 
+        while node:
+            yield node 
+            node = node.next 
