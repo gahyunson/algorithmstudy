@@ -16,11 +16,11 @@ class Node:
         self.children = []
     
     def add(self, data):
-        node = Node(data)
-        self.children.append(node)
+        # node = Node(data)
+        self.children.append(Node(data))
     
-    def remove(self):
-        self.children.pop()
+    def remove(self, data):
+        self.children = [child for child in self.children if child.data != data]
 
 class Tree:
     pass
