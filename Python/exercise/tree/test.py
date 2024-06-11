@@ -24,7 +24,7 @@ class TestNode(unittest.TestCase):
         n.remove('b')
         self.assertEqual(len(n.children), 0)
 
-@unittest.skip("Tree tests skipped")
+# @unittest.skip("Tree tests skipped")
 class TestTree(unittest.TestCase):
     def test_starts_empty(self):
         t = Tree()

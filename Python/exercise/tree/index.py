@@ -23,4 +23,18 @@ class Node:
         self.children = [child for child in self.children if child.data != data]
 
 class Tree:
-    pass
+    def __init__(self) -> None:
+        self.root = None 
+    
+    def traverseBF(self, fn):
+        arr = [self.root]
+        while len(arr):
+            node = arr.pop(0)
+            arr.extend(node.children)
+            fn(node)
+    def traverseDF(self, fn):
+        arr = [self.root]
+        while arr:
+            node = arr.pop(0)
+            arr = node.children + arr 
+            fn(node)
