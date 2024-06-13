@@ -64,10 +64,10 @@ class Tree:
     we have to very precisely specify which node we want to adding or removing elements from.
 
     So, which node are we trying to add new Node to?
-    add and remove method with an actual node
+    add and remove method with an actual Node
 
     Because, it doesn't quite. It's kind of hard to evision 
-    how we might call add or remove on atree
+    how we might call add or remove on a tree
     '''
 
     '''
@@ -100,7 +100,7 @@ class Tree:
             arr.extend([child for child in node.children])
 
             # pass to fn the element
-            # gets called with each element in the tree
+            # gets called with each elements in the tree
             fn(node)
 
 
