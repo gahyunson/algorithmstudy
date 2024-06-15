@@ -33,9 +33,9 @@ class Node:
         # all the data are unique values
         if self.data == data:
             return self 
-        elif self.data > data and self.left :
+        elif self.data > data and self.left:
             return self.left.contains(data)
-        elif self.data < data and self.right :
+        elif self.data < data and self.right:
             return self.right.contains(data)
         
         return None 
