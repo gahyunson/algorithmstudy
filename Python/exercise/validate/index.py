@@ -7,15 +7,17 @@
 
 
 def validate(node, min = None, max = None):
+    # compare values
     if max != None and (node.data > max):
         return False
     if min != None and (node.data < min):
         return False
     
-
-    if node.left and not validate(node.left, min, node.data):
+    # update max value if we move to node.left 
+    if node.left and not validate(node.left, min = min, max = node.data):
         return False
-    if node.right and not validate(node.right, node.data, max):
+    # update min value if we try to move to right
+    if node.right and not validate(node.right, min = node.data, max = max):
         return False
     
     return True
