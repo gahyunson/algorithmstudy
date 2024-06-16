@@ -21,7 +21,9 @@ class TestEvents(unittest.TestCase):
 
         events.on('click', cb1)
         events.on('click', cb2)
+        print(events.events)
         events.trigger('click')
+        print(events.__dict__)
 
         self.assertEqual(cb1.call_count, 1)
         self.assertEqual(cb2.call_count, 1)
