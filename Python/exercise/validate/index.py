@@ -21,5 +21,3 @@ def validate(node, min = None, max = None):
         return False
     
     return True
-
-
