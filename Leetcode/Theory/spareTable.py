@@ -1,16 +1,3 @@
-# Sparse Table 
-
-- O(n logn)
-- arrow graph
-- To find the minumum or maximum value in a particular range of an array
-- building up from smaller ranges to larger ones
-
-- 1 위치에서 5번째 앞에 위치한 정점 찾는 방법
-- 1에서 5번째를 세알려서 이동하여 정점을 찾는다 - O(n)
-
-- 5 = 101(2) = 2^0 + 2^2 = 1 + 4 , 1번 정점에서 1번째 앞에 위치한 정점 = 2 ~ 2번째 정점에서 4번째 앞에 위치한 정점 = 6 => 1 정점에서 5번째 앞에 위치한 정점 = 6
-
-```python
 import math
 
 def build_sparse_table(arr):
@@ -42,4 +29,3 @@ st = build_sparse_table(arr)
 print(query(st, 0, 4))  # 0 출력
 print(query(st, 4, 7))  # 3 출력
 print(query(st, 3, 3))  # 0 출력
-```
