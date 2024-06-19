@@ -3,7 +3,7 @@ import index
 
 S = index 
 bubbleSort = S.bubblesort
-# selectionSort = S.selectionSort
+selectionSort = S.selectionSort
 # mergeSort = S.mergeSort
 
 class Test(unittest.TestCase):
@@ -15,6 +15,9 @@ class Test(unittest.TestCase):
 
     def test_bubble_sort(self):
         self.assertEqual(bubbleSort(self.getArray()), self.getSortedArray())
+
+    def test_selection_sort(self):
+        self.assertEqual(selectionSort(self.getArray()), self.getSortedArray())
 
 
 if __name__=='__main__':
