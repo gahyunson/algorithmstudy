@@ -35,3 +35,27 @@ def selectionSort(arr):
             arr[indexOfMin], arr[i] = arr[i], arr[indexOfMin]
 
     return arr
+
+# contain recursive code
+def mergeSort(arr):
+    if len(arr)==1:
+        return arr 
+    
+    left = arr[:len(arr)//2]
+    right = arr[len(arr)//2:]
+
+    return merge(mergeSort(left), mergeSort(right))
+
+# doesn't contain any recursive code
+def merge(left, right):
+    # return left + right sorted
+    results = []
+    while left and right:
+        if left[0] < right[0]:
+            results.append(left.pop(0))
+        else:
+            results.append(right.pop(0))
+
+    results.extend(left)
+    results.extend(right)
+    return results 
