@@ -29,9 +29,8 @@ def query(st, L, R):
     # Uses the precomputed values to find the minimum efficiently
     return min(st[L][j], st[R - (1 << j) + 1][j])
 
-# 예시 사용
 arr = [7, 2, 3, 0, 5, 10, 3, 12, 18]
 st = build_sparse_table(arr)
-print(query(st, 0, 4))  # 0 출력
-# print(query(st, 4, 7))  # 3 출력
-# print(query(st, 3, 3))  # 0 출력
+print(query(st, 0, 4))  # 0 
+# print(query(st, 4, 7))  # 3 
+# print(query(st, 3, 3))  # 0 

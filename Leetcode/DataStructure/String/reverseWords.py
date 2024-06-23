@@ -21,10 +21,11 @@ import unittest
 
 class Test(unittest.TestCase):
     def test_reverse(self):    
+        solution = Solution()
         input = "  hello world  "
         output = "world hello"
 
-        self.assertEqual(Solution(input), output)
+        self.assertEqual(solution.reverseWords(input), output)
 
 if __name__ == '__main__':
     unittest.main()
