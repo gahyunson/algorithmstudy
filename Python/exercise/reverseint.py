@@ -8,12 +8,19 @@
 #   reverseInt(-15) === -51
 #   reverseInt(-90) === -9
 
+
+
 import pdb 
 
 def reverseInt(n):
+    # First, convert the number into a string.
+    # Use the absolute value to remove the minus sign, if present.
     result = str(abs(n))[::-1]
+    # Then convert the string back into a integer.
     result = int(result)
     # breakpoint()
+    # So if 'n' is grater than zero, than we want to just leave everything as is.
+    # if 'n' is less than zero, then we want to multiply the result of this by negative one to turn it into a negative number.
     if n < 0:
         result = result * -1
     
