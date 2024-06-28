@@ -14,6 +14,10 @@
 #   4
 #   buzz
 
+# for문을 이용해서 1부터 n범위의 숫자들이 출력되게 하고,
+# 특정 배수들의 경우 특정 문구가 출력되도록 if문을 이용했습니다.
+# I printed numbers of range 1 to n with for loop,
+# and I changed number to a word at specific numbers with if statement.
 def fizzBuzz(n):
     for i in range(1,n+1):
         # Is the number a multiple of 3 and 5?
