@@ -7,6 +7,23 @@
 #   anagrams('rail safety', 'fairy tales') --> True
 #   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 #   anagrams('Hi there', 'Bye there') --> False
+
+
+# def anagrams(stringA, stringB):
+#     dict = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
+#             'N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+#             'a','b','c','d','e','f','g','h','i','j','k','l','m',
+#             'n','o','p','q','r','s','t','u','v','w','x','y','z']
+#     for a in stringA:
+#         if a in stringB:
+#             stringB.replace(a, '')
+    
+#     for b in stringB:
+#         if b in dict:
+#             return False
+#     return True
+
+
 import re
 
 def anagrams3(stringA, stringB):    
@@ -70,14 +87,14 @@ def buildCharMap(str):
 # print(anagrams1('One one', 'One one c'))
 # print(anagrams1('A tree, a life, a bench', 'A tree, a fence, a yard'))
 
-# print(anagrams2('hello', 'llohe'))
-# print(anagrams2('Whoa! Hi!', 'Hi! Whoa!'))
-# print(anagrams2('One One', 'Two two two'))
-# print(anagrams2('One one', 'One one c'))
-# print(anagrams2('A tree, a life, a bench', 'A tree, a fence, a yard'))
+print(anagrams2('hello', 'llohe'))
+print(anagrams2('Whoa! Hi!', 'Hi! Whoa!'))
+print(anagrams2('One One', 'Two two two'))
+print(anagrams2('One one', 'One one c'))
+print(anagrams2('A tree, a life, a bench', 'A tree, a fence, a yard'))
 
-print(anagrams3('hello', 'llohe'))
-print(anagrams3('Whoa! Hi!', 'Hi! Whoa!'))
-print(anagrams3('One One', 'Two two two'))
-print(anagrams3('One one', 'One one c'))
-print(anagrams3('A tree, a life, a bench', 'A tree, a fence, a yard'))
+print(anagrams('hello', 'llohe'))
+print(anagrams('Whoa! Hi!', 'Hi! Whoa!'))
+print(anagrams('One One', 'Two two two'))
+print(anagrams('One one', 'One one c'))
+print(anagrams('A tree, a life, a bench', 'A tree, a fence, a yard'))

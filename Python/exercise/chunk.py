@@ -24,9 +24,14 @@ def chunk3(array, size):
         index = index + size
     return chunked
 
+'''
+The chunk2 function is designed to split a given array into smaller chunckes of a specified size.
+'''
 def chunk2(array, size):
+    # create empty array to hold chunks called 'chunked'
     chunked = []
     
+    # For each element in the 'unchunked' array
     for arr in array:
         '''
         chunked=[] , chunked[-1]-> indexerror
@@ -34,12 +39,19 @@ def chunk2(array, size):
         'chunked' is used as reference for 'last'.
         If I use last.append(something), it's going to midify the array inside 'chunked'.
         '''
+        # Retrieve the last element in 'chunked'
         last = chunked[len(chunked)-1] if chunked else None
+        # if last element doesn't exist, or if its length is equal to chunck size
         if not last or len(last)==size:
+            # append a new chunk into 'chunked' with the current element
             chunked.append([arr])
+        # else add the current element into the chunk
         else:
             last.append(arr)
     return chunked
 
 print(chunk2([1,2,3,4,5,6,7,8,9],2))
 print(chunk2([1,2,3,4,5],3))
+
+# The time Complexity of the function is O(n)
+# The space complexity is also O(n) because the function creates a new list that stores all elements of the input array.
