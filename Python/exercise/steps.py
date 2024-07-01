@@ -17,6 +17,14 @@
 #       '### '
 #       '####'
 
+'''
+How to approach?
+1. I found the formular for the number of each character.
+2. I treated such as matrix. I used the column and row index values like a matrix.
+3. I used a recursive method.
+
+'''
+
 def steps1(n):
     # From 0 to n
     for i in range(n):
@@ -29,6 +37,12 @@ def steps1(n):
         print('#'*(i+1) + '_'*(n-i-1))
     
 # row and column
+# 0 | 1 2 3
+#   ---------
+# 1 | #
+# 2 | # #
+# 3 | # # #
+# col > row : ' ', col <= row : '#'
 def steps2(n):
     # From 0 to n (iterate through rows)
     for row in range(n):
@@ -49,7 +63,7 @@ def steps2(n):
 # recursive
 def steps3(n, row = 0, stair = ''):
     if n==row:
-        return;
+        return
 
     # pass to next row
     if n == len(stair):
