@@ -63,3 +63,8 @@ This is the minimum cost between vertices 0 and 5.
 
 * 우선순위 큐
 
+### Queue vs. Priority Queue
+- Queue: The oldest element is dequeued first.
+    FIFO
+- Priority Queue: The highest priority is dequeued.
+There is difference based on a defined standard.
