@@ -12,7 +12,7 @@
 * 시작점의 비용은 항상 0이다. 
 
 ## Processing Steps (처리 과정)
-
+ 
 1. For vertices [0, 1, 2, 3, 4, 5], if 0 is the starting point,
 the initial costs are set as [0, inf, inf, inf, inf, inf].
 
