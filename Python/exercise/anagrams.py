@@ -26,6 +26,14 @@
 
 import re
 
+# using reg expression, dictionary...
+# 정규표현식을 이용해서 알파벳만 남긴다.
+# 알파벳이 무엇이 몇 개 있는지 딕셔너리에 등록한다.
+# 두 개의 딕셔너리를 비교해서 완전히 똑같은지 확인한다.
+
+# Use regular expressions to keep only alphabets
+# Create two dictionaries to store the count of each alphabet
+# compare two dictionaries to check if they are completely equal.
 def anagrams3(stringA, stringB):    
     reA = sorted(re.sub(r'\W', '', stringA).lower())
     reB = sorted(re.sub(r'\W', '', stringB).lower())
@@ -52,6 +60,10 @@ def anagrams3(stringA, stringB):
     return True 
 
 
+# Use regular expressions to keep only alphabets
+# And change the alphabets to lowercase
+# And sort it to compare
+# compare two strings
 def anagrams2(stringA, stringB):
     return cleanString(stringA) == cleanString(stringB)
 
@@ -60,8 +72,11 @@ def cleanString(str):
     reStr = sorted(re.sub(r'\W', '', str).lower())
     return reStr
 
-# print(cleanString('hello !ee'))
-
+# Create a function to
+# Use regular expressions to keep only alphabets
+# And change to lowercase 
+# Create a dictionary to count the alphabets.
+# We can easily compare strings with the function.
 def anagrams1(stringA, stringB):
     aCharMap = buildCharMap(stringA)
     bcharMap = buildCharMap(stringB)
@@ -81,11 +96,6 @@ def buildCharMap(str):
             charMap[char] += 1
     return charMap
 
-# print(anagrams1('hello', 'llohe'))
-# print(anagrams1('Whoa! Hi!', 'Hi! Whoa!'))
-# print(anagrams1('One One', 'Two two two'))
-# print(anagrams1('One one', 'One one c'))
-# print(anagrams1('A tree, a life, a bench', 'A tree, a fence, a yard'))
 
 print(anagrams2('hello', 'llohe'))
 print(anagrams2('Whoa! Hi!', 'Hi! Whoa!'))
