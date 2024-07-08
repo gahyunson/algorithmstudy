@@ -1,3 +1,19 @@
+# 21. Merge Two Sorted Lists
+
+'''
+Time complexity : O(n+m) 
+Space complexity : O(1)
+
+How to approach?
+
+I create a dummy ListNode to which I will attach elements from the lists.
+I select the smaller values from the lists in sequence and attach them to the new list.
+
+새로운 리스트 노드 변수를 만들어서 
+list1, list2 값을 차례대로 비교하여
+작은 값부터 순서대로 넣어주었다.
+'''
+
 from typing import Optional
 # Definition for singly-linked list.
 class ListNode:
@@ -5,7 +21,6 @@ class ListNode:
         self.val = val
         self.next = next
 
-# 21. Merge Two Sorted Lists
 class Solution21:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(0)
@@ -19,6 +34,7 @@ class Solution21:
                 current.next = list2
                 list2 = list2.next
             current = current.next 
+
         if list1:
             current.next = list1
         elif list2:
