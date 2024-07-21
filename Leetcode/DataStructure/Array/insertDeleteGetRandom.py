@@ -14,15 +14,26 @@ class RandomizedSet:
     def insert(self, val: int) -> bool:
         if val in self.arr:
             return False
+        self.arr_map[val] = len(self.arr)
         self.arr.append(val)
         return True
 
     def remove(self, val: int) -> bool:
-        if val in self.arr:
-            self.arr.remove(val)
-            return True
-        else:
-            return False   
+        if not val in self.arr_map:
+            return False 
+        last_elem_in_list = self.arr[-1]
+        index_of_elem_to_remove = self.arr_map[val]
+
+        self.arr_map[last_elem_in_list] = index_of_elem_to_remove
+        self.arr[index_of_elem_to_remove] = last_elem_in_list
+
+        self.arr[-1] = val
+
+        self.arr.pop()
+
+        self.arr_map.pop(val)
+
+        return True 
 
     def getRandom(self) -> int:
         return random.choice(self.arr)
