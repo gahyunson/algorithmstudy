@@ -17,7 +17,29 @@
 #                     m = min(m, j-i+1)
 #                     continue
 #         return m
+'''
+e.g. nums=[2,3,1,2,4,3], target=7
 
+2 < 7
+2+3 < 7
+2+3+1 < 7
+2+3+1+2 > 7
+min_length = 4
+
+3+1+2 < 7
+3+1+2+4 > 7
+min_length = 4 -> 4
+
+1+2+4 = 7
+min_length = 4 -> 3
+
+2+4 < 7
+2+4+3 > 7
+min_length = 3 -> 3
+
+4+3 = 7
+min_length = 3 -> 2
+'''
 
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
