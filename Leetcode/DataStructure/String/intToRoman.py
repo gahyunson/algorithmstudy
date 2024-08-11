@@ -1,5 +1,23 @@
 # 12. Integer to Roman
 
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+        symbols = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+        result = ""
+        i = 0
+        while num > 0:
+            print(num, values[i])
+            result = result + symbols[i]*(num // values[i])
+            if num >= values[i]:
+                num = num % values[i]
+            i += 1
+
+        print(num)
+        return result
+
+
+
 def intToRoman(self, num: int) -> str:
 	ones = ['I', 'X', 'C', 'M']
 	fives = ['V', 'L', 'D']
