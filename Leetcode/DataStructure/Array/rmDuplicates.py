@@ -25,6 +25,14 @@
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+        idx = 1
+        for i in range(1, len(nums)):
+            if nums[i-1]!=nums[i]:
+                nums[idx] = nums[i]
+                idx += 1
+        return idx
+
+    def removeDuplicates2(self, nums: List[int]) -> int:
         if not nums:
             return 0
 

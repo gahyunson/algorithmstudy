@@ -26,8 +26,14 @@
 '''
 How to approach?
 
+It does not matter what you leave beyond the returned k -> 
+I don't need to care the values when nums[i]==val. 
+Just take the values to front of the array when nums[i]!=val.
+
 Track of two pointers, target elements and non-target elements.
 Overwriting the target elements with non-target elements.
+
+
 '''
 
 from typing import List
