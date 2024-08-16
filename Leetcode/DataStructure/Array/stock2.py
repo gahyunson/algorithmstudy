@@ -7,6 +7,26 @@
 # Find and return the maximum profit you can achieve.
 
 '''
+How to approach?
+
+This is Greedy Algorithm.
+
+'''
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        mx = 0
+        start = prices[0] 
+
+        for i in range(len(prices)):
+            if start < prices[i]:
+                mx = mx + prices[i] - start
+            start = prices[i] 
+        return mx
+    
+
+
+'''
 주어진 테스트 예제들을 보고 각 상황에 맞는 로직을 작성하였다.
 그래서 코드가 길어졌다.
 하지만 테스트를 통과하지 못했다.
@@ -14,7 +34,7 @@
 I wrote logic for each test case based on the given 3 examples. So the became long.
 However, it didn't pass the tests.
 '''
-
+    
 # class Solution:
 #     def maxProfit(self, prices: List[int]) -> int:
 #         profit = 0
