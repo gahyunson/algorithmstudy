@@ -44,4 +44,20 @@ class Solution:
             if i+nums[i] >= goal:
                 goal = i
         return True if goal==0 else False
+    
+'''
+The bigger number is better to reach to the end of the array.
+So, if there is bigger than before, reinitial 'n'.
+-1 is the value of movement to next index.
+'''
 
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        n = 0
+        for num in nums:
+            if n < 0:
+                return False
+            elif n < num:
+                n = num
+            n -= 1
+        return True

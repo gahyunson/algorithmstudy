@@ -15,10 +15,15 @@ This is Greedy Algorithm.
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        # mx (max) is initialized to 0, will accumulate the maximum profit throughout the iteration
         mx = 0
+        # start represents the buying price of the stock
         start = prices[0] 
 
+        # A for loop iterates through the prices array starting from the second element to the end of the array
+        # this loop is used to calculate the profit for each transaction
         for i in range(len(prices)):
+            # checking if the current price is greater than the buying price(start)
             if start < prices[i]:
                 mx = mx + prices[i] - start
             start = prices[i] 
