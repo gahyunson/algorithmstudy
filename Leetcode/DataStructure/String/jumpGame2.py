@@ -14,6 +14,25 @@
 
 class Solution:
     def jump(self, nums: List[int]) -> int:
+        cnt = 0
+        end = 0
+        farthest = 0
+
+        for i in range(len(nums) - 1):
+            print('keep increase:', farthest)
+            farthest = max(farthest, i+nums[i])
+            if farthest >= len(nums)-1:
+                print('End', farthest)
+                cnt += 1
+                return cnt
+            if i==end:
+                print('turning point',end, 'will to', farthest)
+                cnt += 1
+                end = farthest
+        return cnt
+
+class Solution:
+    def jump(self, nums: List[int]) -> int:
         size = len(nums)
         destination = size-1
 
@@ -31,13 +50,3 @@ class Solution:
                 if cur_coverage >= destination:
                     return total_jump
         return total_jump
-
-        # idx = len(nums)-2
-        # cnt = 0
-        # for i in range(len(nums)-2, 0, -1):
-        #     if i+nums[i] >= len(nums)-1:
-        #         # idx = min(i, idx)
-        #         if idx > i:
-        #             print(i, len(nums), nums[i], i+nums[i], idx, cnt)
-        #             idx = i
-        #             cnt += 1
