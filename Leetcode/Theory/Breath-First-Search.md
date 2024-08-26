@@ -1,7 +1,4 @@
-# Depth-fist search DFS 깊이 우선 탐색
-
-
-# Breadth-first search BFS 너비 우선 탐색    
+# Depth-fist search DFS , Breadth-first search BFS   
 모든 정점을 하나씩 순회하기 위한 방법    
 
 1. component의 갯수

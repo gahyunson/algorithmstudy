@@ -6,6 +6,34 @@
 
 # You must write an algorithm that runs in O(n) time and without using the division operation.
 
+class Solution:
+    # Runtime 264ms Beats 70.91%
+    # Memory 25.71MB Beats 48.34%
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        if nums.count(0) > 1:
+            return [0]*len(nums)
+        answer = [1] * len(nums)
+
+        # answer[0] = 1
+        # answer[1] = 1*nums[0]
+        # answer[2] = 1*nums[0]*nums[1]
+        # answer[3] = 1*nums[0]*nums[1]*nums[2]
+        ant = 1
+        for i in range(len(nums)):
+            answer[i] = ant
+            ant = ant*nums[i]
+        
+        # answer[3] = answer[3] * 1
+        # answer[2] = answer[2] * nums[3]
+        # answer[1] = answer[1] * nums[2] * nums[3]
+        # answer[0] = answer[0] * nums[1] * nums[2] * nums[3]
+        post = 1
+        for i in range(len(nums)-1,-1,-1):
+            answer[i] = answer[i] * post
+            post = post * nums[i]
+        return answer
+            
+
 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
@@ -14,21 +42,18 @@ class Solution:
         
         # prefix
         for i in range(1, n):
-            print(answer[i], nums[i-1], answer[i-1])
             answer[i] = nums[i - 1] * answer[i - 1]
-            print('after', answer[i])
 
         # suffix
         R = 1
         product_list = []
         for i in range(n - 1, -1, -1):
-            print('answer[i]:',answer[i], 'before R:',R, answer)
             answer[i] = answer[i] * R
             R *= nums[i]
             product_list.append(nums[i])
-            print('after R:',R, product_list)
         
         return answer
+    
     # def productExceptSelf(self, nums: List[int]) -> List[int]:
     #     n = len(nums)
     #     prefix = 1
