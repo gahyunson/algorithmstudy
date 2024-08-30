@@ -31,6 +31,7 @@ class Solution:
         for i in range(len(nums)-1,-1,-1):
             answer[i] = answer[i] * post
             post = post * nums[i]
+        
         return answer
             
 
