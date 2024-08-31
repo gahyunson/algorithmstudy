@@ -15,6 +15,31 @@
 # Input: str1 = "LEET", str2 = "CODE"
 # Output: ""
 
+'''
+Now I can explain it...
+
+It was so difficult because I considered some examples not included in this problem.
+For example str1 = "ABC", str2 = "ADE". this is not for this problem.
+
+They will give you only example repeated strings.
+They said 's = t+t+t+t+..+t'. It means they will always give us the example repeated.
+
+So you don't have to worry all the substrings.
+
+Example 1:
+you can transform it to 
+str1 = x + x , str2 = x
+(ABC + ABC) , (ABC)
+They required the value 'x' so str1 - x = x 
+len(str1-x) is equal with len(str2)
+
+Example 2:
+str1 = (AB + AB + AB) = x + x + x , str2 = (AB + AB) = x + x .
+We need x value. 
+str1 - (x + x) = x = str1 - str2 = x 
+so you can make it by str1[len(str2):]
+'''
+
 class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
         # If both strings have the same length, check if they are identical.
