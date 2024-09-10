@@ -37,13 +37,13 @@ class Solution:
                 return True
         return False
 
-	'''
-	2 have Time Limit Exceeded.
+        '''
+        2 have Time Limit Exceeded.
 
-	It was cool idea. but I think the problem is min and max method. 
-	It might made the exceeded error.
+        It was cool idea. but I think the problem is min and max method. 
+        It might made the exceeded error.
 
-	'''
+        '''
     def increasingTriplet2(self, nums: List[int]) -> bool:
         if len(nums) < 3:
             return False
