@@ -5,6 +5,10 @@
 # A row and column pair is considered equal if they contain the same elements in the same order (i.e., an equal array).
 
 class Solution:
+    '''
+    Time: O(n**3)
+    Space: O(1)
+    '''
     def equalPairs(self, grid: List[List[int]]) -> int:
         # n = len(grid)
         # cnt = 0
