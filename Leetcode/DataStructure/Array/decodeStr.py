@@ -8,6 +8,8 @@
 
 # The test cases are generated so that the length of the output will never exceed 105.
 '''
+Stack Data Structure.
+
 Time: O(n)
 Space: O(1)
 '''
