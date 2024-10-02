@@ -34,3 +34,27 @@ class Solution:
             ant += 1
             post -= 1
         return num
+
+    '''Time Limit Exceeded'''
+    def pairSum2(self, head: Optional[ListNode]) -> int:
+        curr = head
+        total = []
+        while curr:
+            total.append(curr.val)
+            curr = curr.next
+
+        curr = head
+        nxxt = None
+        cnt = 0
+        while curr:
+            cnt += 1
+            tmp = curr.next
+            curr.next = nxxt
+            nxxt = curr
+            curr = tmp
+
+        for i in range(cnt//2):
+            total[i] = total[i] + nxxt.val
+            nxxt = nxxt.next
+
+        return max(total[:cnt//2])
