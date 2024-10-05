@@ -10,13 +10,41 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from typing import Optional
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 class Solution:
+    '''
+    How to approach?
+    Depth-First Search DFS.
+
+    Time complexity: O(n) for DFS
+    Space complexity: O(logn) - O(n) for the recursive
+    '''
     def maxDepth(self, root: Optional[TreeNode]) -> int:
+        cnt = 0
+        if not root:
+            return cnt
+
+        def dfs(root, cnt):
+            left = 0
+            right = 0
+            if root.left:
+                left = dfs(root.left, cnt+1)
+            if root.right:
+                right = dfs(root.right, cnt+1)
+            return max(cnt, left, right)
+        return dfs(root, 1)
+
+    def maxDepth2(self, root: Optional[TreeNode]) -> int:
         def dfs(root, depth):
             if not root:
-                # print(depth)
                 return depth
-            # print(root)
             return max(dfs(root.left, depth+1), dfs(root.right, depth+1))
         return dfs(root, 0)
 
