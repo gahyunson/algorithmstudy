@@ -13,7 +13,8 @@ class TreeNode:
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         """
-        DFS
+        DFS.
+        I manage the maximum value by storing a pair of current root info.
 
         Time complexity: O(n)
         Space complexity: O(logn) - O(n)
