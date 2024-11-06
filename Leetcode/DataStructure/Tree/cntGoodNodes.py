@@ -13,6 +13,26 @@ class TreeNode:
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         """
+        Runtime 97ms Beats 99.95%
+        Memory 31.23MB Beats 18.34%
+        """
+        if not root:
+            return 0
+
+        def dfs(node, output, max_node):
+            if node.val >= max_node:
+                max_node = node.val
+                output += 1
+
+            if node.left:
+                output = dfs(node.left, output, max_node)
+            if node.right:
+                output = dfs(node.right, output, max_node)
+            return output
+        return dfs(root, 0, float('-inf'))
+
+    def goodNodes3(self, root: TreeNode) -> int:
+        """
         DFS.
         I manage the maximum value by storing a pair of current root info.
 
