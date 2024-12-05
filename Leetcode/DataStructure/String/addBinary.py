@@ -13,7 +13,7 @@ class Solution:
         """
         return bin(int(a, 2)+int(b, 2))[2:]
 
-    def addBinary(self, a: str, b: str) -> str:
+    def addBinary2(self, a: str, b: str) -> str:
         """
         Time complexity: O(len(a)+len(b))
         Space complexity: O(len(a)+len(b))
@@ -23,7 +23,6 @@ class Solution:
         """
         a10 = 0
         for i in range(len(a)):
-            print(i, a[i])
             a10 += int(a[i])*(2**(len(a)-i-1))
 
         b10 = 0
